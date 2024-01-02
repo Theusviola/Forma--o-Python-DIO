@@ -1,7 +1,15 @@
 def exibirMenu():
-    print("1 Depositar\n 2 Sacar\n 3 Extrato\n 0 Sair ->\n")
+    menu = """
 
-def deposito(saldo, extrato):
+[1] Depositar
+[2] Sacar
+[3] Extrato
+[0] Sair ->
+
+"""
+    return input(menu)
+
+def deposito(valor, saldo, extrato):
     print("Depósito")
     valor = float(input("Por favor, digite o valor que deseja depositar:"))
 
@@ -46,13 +54,14 @@ def main():
     extrato = ''
     numero_saques = 0
     LIMITE_SAQUES = 3
+    usuarios = []
+    contas = []
 
     while True:
-        exibirMenu()
-        opcao = int(input())
+        opcao = input(exibirMenu())
 
         if opcao == 1:
-            deposito(saldo, extrato)
+            saldo, extrato = deposito(valor, saldo, extrato)
 
         elif opcao == 2:
             saque(saldo, extrato, limite, numero_saques, LIMITE_SAQUES)
